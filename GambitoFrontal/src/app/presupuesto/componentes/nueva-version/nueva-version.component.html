@@ -1,0 +1,106 @@
+<h3>Nueva versión del presupuesto</h3>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <!-- <th scope="col">Id</th> -->
+      <th scope="col">Año</th>
+      <th scope="col">Version</th>
+      <th scope="col">Estado</th>
+      <th scope="col">partida</th>
+      <th scope="col">tipo</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let VEPR of VEPRs; index as i">
+      <th scope="row">{{ i + 1 }}</th>
+      <!-- <td>{{ VEPR.Id_VEPR }}</td> -->
+      <td>{{ VEPR.Year }}</td>
+      <td>{{ VEPR.Version }}</td>
+      <td>{{ VEPR.Estado }}</td>
+      <td>{{ VEPR.CodigoTIPR }}</td>
+      <td>{{ VEPR.CodigoPAPR }}</td>
+
+    </tr>
+    </tbody>
+  </table>
+
+<div class="container">
+
+<!-- <form (ngSubmit)="submit()"> -->
+<form (submit)="submit()" [formGroup]="registerForm">
+
+   <!--  <table class="table table-striped">
+      <td> -->
+      <div class="form-group">
+          <label for="Year">Año</label>
+          <input type="text"
+          class="form-control"
+          formControlName="Year">
+          <div *ngIf="year.invalid && (year.dirty || year.touched)"
+           class="alert alert-danger">
+            <div *ngIf="year.errors.required">
+              El año es requerido
+            </div>
+          </div>
+        </div>
+      <!-- </td>
+      <td>-->
+        <!-- <button type="button" (click)="llenarTabla(year.value)">Buscar año</button> -->
+
+        <button class="btn btn-primary" type="button"
+        aria-expanded="false" aria-controls="registerForm" (click)="llenarTabla(year.value)">
+        Buscar año
+       </button>
+     <!--  </td>
+    </table> -->
+
+
+  <div class="form-group">
+    <label for="Version">Versión de presupuesto</label>
+    <input type="text"
+    class="form-control"
+    formControlName="Version">
+    <div *ngIf="version.invalid && (version.dirty || version.touched)"
+     class="alert alert-danger">
+      <div *ngIf="version.errors.required">
+        La versión es requerida
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="Estado">Estado</label>
+    <input type="text"
+    class="form-control"
+    formControlName="Estado">
+    <div *ngIf="estado.invalid && (estado.dirty || estado.touched)"
+     class="alert alert-danger">
+      <div *ngIf="estado.errors.required">
+        La versión es requerida
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="CodigoPAPR">Escoja el tipo de partida</label>
+    <select class="form-control" id="CodigoPAPR" name="CodigoPAPR" formControlName="CodigoPAPR">
+      <option *ngFor="let PAPR of PAPRs" [value]="PAPR.value">{{PAPR.text}}</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="CodigoTIPR">Escoja el tipo de Presupuesto</label>
+    <select class="form-control" id="CodigoTIPR" name="CodigoTIPR" formControlName="CodigoTIPR">
+      <option *ngFor="let TIPR of TIPRs" [value]="tipo.value">{{TIPR.text}}</option>
+    </select>
+  </div>
+
+
+
+  <button type="submit" class="btn btn-success" [disabled]="registerForm.invalid">Enviar</button>
+  <button type="button" class="btn btn-default" (click)="refrescar()">Refrescar</button>
+
+</form>
+</div>

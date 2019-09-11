@@ -1,0 +1,25 @@
+<h3>Lista de Centros de Trabajo</h3>
+
+ <table class="table table-striped">
+   <thead>
+   <tr>
+     <th scope="col">#</th>
+     <th scope="col">Id</th>
+     <th scope="col">Código</th>
+     <th scope="col">Nº Empleados</th>
+     <th scope="col">Localidad</th>
+     <th scope="col">Zona</th>
+   </tr>
+   </thead>
+   <tbody>
+   <tr *ngFor="let Centro of Centros; index as i">
+     <th scope="row">{{ i + 1 }}</th>
+     <td>{{ Centro.Id_Centro }}</td>
+     <td>{{ Centro.CodigoCentro }}</td>
+     <td>{{ Centro.NEmpleados }}</td>
+     <td>{{ Centro.DirCiudad }}</td>
+     <td>{{ Centro.Zona }}</td>
+   </tr>
+   </tbody>
+ </table>
+

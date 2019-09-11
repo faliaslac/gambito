@@ -1,0 +1,24 @@
+<h3>Lista de Versiones de Presupuesto</h3>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Id</th>
+    <th scope="col">Código</th>
+    <th scope="col">Descripción</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let VEPR of VEPRs; index as i">
+    <th scope="row">{{ i + 1 }}</th>
+    <td>{{ VEPR.Id_VEPR }}</td>
+    <td>{{ VEPR.YEAR }}</td>
+    <td>{{ VEPR.Version }}</td>
+    <td>{{ VEPR.Estado }}</td>
+    <td>{{ VEPR.Codigo }}</td>
+    <td>{{ VEPR.CodigoTIPR }}</td>
+    <td>{{ VEPR.CodigoPAPR }}</td>
+  </tr>
+  </tbody>
+</table>

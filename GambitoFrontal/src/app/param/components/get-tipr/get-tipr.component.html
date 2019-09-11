@@ -1,0 +1,23 @@
+Put the user ID:
+<input type="text" #textId>
+<button (click)="getUser(textId.value)">Dame Tipo Presupuesto</button>
+
+<hr>
+
+<ng-container *ngIf="notFound">
+  Tipo de presupuesto no encontrado
+</ng-container>
+
+<ng-container *ngIf="tipr">
+  <div>
+    Id: {{ tipr.Id_TIPR }}
+  </div>
+
+  <div>
+    Código: {{ tipr.Codigo }}
+  </div>
+
+  <div>
+    Descripción: {{ tipr.Descripcion }}
+  </div>
+</ng-container>

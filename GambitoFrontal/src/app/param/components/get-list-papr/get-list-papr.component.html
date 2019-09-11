@@ -1,0 +1,20 @@
+<h3>Lista de Partidas de Presupuesto</h3>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Id</th>
+    <th scope="col">Código</th>
+    <th scope="col">Descripción</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let PAPR of PAPRs; index as i">
+    <th scope="row">{{ i + 1 }}</th>
+    <td>{{ PAPR.Id_PAPR }}</td>
+    <td>{{ PAPR.Codigo }}</td>
+    <td>{{ PAPR.Descripcion }}</td>
+  </tr>
+  </tbody>
+</table>

@@ -1,0 +1,34 @@
+<h3>Lista de Niveles de detalle de Presupuesto</h3>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <!-- falta aclarar qué columnas muestro y en qué orden-->
+    <th scope="col">#</th>
+    <th scope="col">Id</th>
+    <th scope="col">CodTIPR </th>
+    <th scope="col"> CodPAPR</th>
+    <th scope="col"> Codigo </th>
+    <th scope="col"> Padre </th>
+    <th scope="col"> Nivel </th>
+    <th scope="col"> Descripcion </th>
+    <th scope="col"> CentroReparto </th>
+    <th scope="col"> CIReparto </th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let NIPR of NIPRs; index as i">
+    <th scope="row">{{ i + 1 }}</th>
+    <td>{{ NIPR.Id_NIPR }}</td>
+    <td>{{ NIPR.CodTIPR }}</td>
+    <td>{{ NIPR.CodPAPR }}</td>
+    <td>{{ NIPR.Codigo }}</td>
+    <td>{{ NIPR.Padre }}</td>
+    <td>{{ NIPR.Nivel }}</td>
+    <td>{{ NIPR.Descripcion }}</td>
+    <td>{{ NIPR.CentroReparto }}</td>
+    <td>{{ NIPR.CIReparto }}</td>
+  </tr>
+  </tbody>
+</table>
+

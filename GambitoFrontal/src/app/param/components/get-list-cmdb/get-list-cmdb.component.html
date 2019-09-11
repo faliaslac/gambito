@@ -1,0 +1,30 @@
+<h3>Configuration Item (CI) de la CMDB</h3>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Tipo CI</th>
+    <th scope="col">Descripcion</th>
+    <th scope="col">Detalle</th>
+    <th scope="col">Fabricante</th>
+    <th scope="col">Matricula</th>
+    <th scope="col">Centro</th>
+    <th scope="col">FechaInstalacion</th>
+    <th scope="col">Unidades</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let CMDB of CMDBs; index as i">
+    <th scope="row">{{ i + 1 }}</th>
+    <td>{{ CMDB.TipoCI }}</td>
+    <td>{{ CMDB.DescripcionCI }}</td>
+    <td>{{ CMDB.DetalleCI }}</td>
+    <td>{{ CMDB.FabricanteCI }}</td>
+    <td>{{ CMDB.Matricula }}</td>
+    <td>{{ CMDB.Centro }}</td>
+    <td>{{ CMDB.FechaInstalacion }}</td>
+    <td>{{ CMDB.Unidades }}</td>
+  </tr>
+  </tbody>
+</table>

@@ -1,0 +1,20 @@
+ <h3>Lista de Tipos de Presupuesto</h3>
+
+ <table class="table table-striped">
+   <thead>
+   <tr>
+     <th scope="col">#</th>
+     <th scope="col">Id</th>
+     <th scope="col">Código</th>
+     <th scope="col">Descripción</th>
+   </tr>
+   </thead>
+   <tbody>
+   <tr *ngFor="let TIPR of TIPRs; index as i">
+     <th scope="row">{{ i + 1 }}</th>
+     <td>{{ TIPR.Id_TIPR }}</td>
+     <td>{{ TIPR.Codigo }}</td>
+     <td>{{ TIPR.Descripcion }}</td>
+   </tr>
+   </tbody>
+ </table>

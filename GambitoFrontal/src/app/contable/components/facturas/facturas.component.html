@@ -1,0 +1,178 @@
+<h3>Alta de facturas</h3>
+
+<form (submit)="submit()" [formGroup]="cabeceraForm" class="form-inline">
+  <table  class="table table-striped table-hover "  id="TableMuestraFormulario">
+    <!-- fila de datos de la fila seleccionada -->
+    <tr>
+      <td>
+          <div class="form-group">
+              <label for="Year">Año: </label>
+              <input type="text"
+              class="form-control"
+              formControlName="Year">
+          </div>
+      </td>
+      <td>
+          <div class="form-group">
+            <label for="CodigoPAPR">Partida Contable: </label>
+            <select class="form-control" id="CodigoPAPR" name="CodigoPAPR" formControlName="CodigoPAPR">
+              <option *ngFor="let PAPR of PAPRs" [value]="PAPR.value">{{PAPR.text}}</option>
+            </select>
+          </div>
+      </td>
+      <td>
+          <div class="form-group">
+            <label for="CodigoTIPR">Escoja el tipo de Presupuesto: </label>
+            <select class="form-control" id="CodigoTIPR" name="CodigoTIPR" formControlName="CodigoTIPR">
+              <option *ngFor="let TIPR of TIPRs" [value]="TIPR.value">{{TIPR.text}}</option>
+            </select>
+          </div>
+
+      </td>
+      <td>
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#TablePresupuesto"
+           aria-expanded="false" aria-controls="facturaForm" (click)="BuscaPresupuesto()">
+            Introducir datos
+          </button>
+      </td>
+    </tr>
+  </table>
+</form>
+
+<form (submit)="submit()" class="collapse" [formGroup]="proveedorForm" id="proveedorForm" class="form-inline">
+<!-- Tabla con los movimientos de cabecera del presupuesto, para elegir el detalle -->
+<!-- inicialmente está oculta, se ve cuando eliges la versión del presupuesto -->
+
+  <table class="table table-striped table-hover" id="TablePresupuesto">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Id</th>
+        <th scope="col">Descripción</th>
+        <th scope="col">Presupuestado</th>
+        <th scope="col">Facturado</th>
+        <th scope="col">Selección</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let MOPR of MOPRs; index as j">
+        <th scope="row">{{ j + 1 }}</th>
+        <td>{{ MOPR.Id_MOPR }}</td>
+        <td>{{ MOPR.Descripcion }}</td>
+        <td>{{ MOPR.ImportePresupuesto }}</td>
+        <td>{{ MOPR.ImporteFacturado }}</td>
+        <td>
+          <div class="radio">
+            <label><input type="radio" name="optradio"
+                (change)="handleSeleccionarClick( j )">
+             </label>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+  </table>
+
+  <table class="table table-striped table-hover" id="TableProveedor">
+    <tr>
+      <td>
+        <div class="form-group">
+            <label for="NIFProveedor">NIF Proveedor</label>
+            <input type="text"
+            class="form-control"
+            formControlName="NIFProveedor">
+        </div>
+      </td>
+      <td>
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#facturaForm"
+          aria-expanded="false" aria-controls="TableMuestraFormulario" (click)="BuscarProveedor()">
+           Buscar Proveedor
+          </button>
+      </td>
+      <td>
+        <div class="form-group">
+            <label for="NombreProveedor">Nombre Proveedor</label>
+            <input type="text"
+            class="form-control"
+            formControlName="NombreProveedor">
+        </div>
+      </td>
+      <td>
+        <div class="form-group">
+          <label for="IdProveedor">Id Proveedor</label>
+          <input type="text"
+          class="form-control"
+          formControlName="IdProveedor">
+      </div>
+      </td>
+    </tr>
+  </table>
+</form>
+
+<form (submit)="submit()" class="collapse" [formGroup]="facturaForm" id="facturaForm">
+  <table  class="table table-striped table-hover "  id="TableMuestraFormulario">
+
+    <tr>
+      <td>
+        <div class="form-group">
+          <label for="FecPago">Fecha de Pago</label>
+          <input type="text"
+          class="form-control"
+          data-toggle="tooltip" data-placement="top" title="dd/mm/aaaa"
+          formControlName="FecPago">
+        </div>
+      </td>
+      <td>
+        <div class="form-group">
+          <label for="FecFactura">Fecha Factura</label>
+          <input type="text"
+          class="form-control"
+          data-toggle="tooltip" data-placement="top" title="dd/mm/aaaa"
+          formControlName="FecFactura">
+        </div>
+      </td>
+      <td>
+        <div class="form-group">
+          <label for="ImpBruto">Importe bruto</label>
+          <input type="text"
+          class="form-control"
+          data-toggle="tooltip" data-placement="top" title="0.00"
+          formControlName="ImpBruto">
+        </div>
+      </td>
+      <td>
+        <div class="form-group">
+          <label for="Impuesto">Impuesto</label>
+          <input type="text"
+          class="form-control"
+          data-toggle="tooltip" data-placement="top" title="0.00"
+          formControlName="Impuesto">
+        </div>
+      </td>
+      <td>
+        <div class="form-group">
+          <label for="ImpNeto">Importe Neto</label>
+          <input type="text"
+          class="form-control"
+          data-toggle="tooltip" data-placement="top" title="0.00"
+          formControlName="ImpNeto">
+        </div>
+      </td>
+      <td>
+        <div class="form-group">
+          <label for="Concepto">Concepto Factura</label>
+          <input type="text"
+          class="form-control"
+          formControlName="Concepto">
+        </div>
+      </td>
+      <td>
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#TablePresupuesto"
+          aria-expanded="false" aria-controls="TablePresupuesto" (click)="GuardarFactura()">
+            Grabar Factura
+          </button>
+      </td>
+    </tr>
+  </table>
+</form>
+
+
